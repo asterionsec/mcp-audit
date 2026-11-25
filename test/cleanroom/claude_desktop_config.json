@@ -1,0 +1,6 @@
+{
+  "mcpServers": {
+    "remote": { "url": "http://mcp.example.com/mcp" },
+    "unpinned": { "command": "npx", "args": ["-y", "some-mcp-server"] }
+  }
+}

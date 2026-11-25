@@ -1,0 +1,51 @@
+{
+  "name": "@asterionsec/mcp-audit",
+  "version": "0.1.0",
+  "description": "Audit your MCP server configurations for supply-chain, secret, network, filesystem and auto-approval risks. Local, deterministic, zero runtime dependencies.",
+  "license": "Apache-2.0",
+  "author": "Asterion (https://asterionsec.com)",
+  "homepage": "https://asterionsec.com/en/tools/mcp-audit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asterionsec/mcp-audit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asterionsec/mcp-audit/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "security",
+    "audit",
+    "claude",
+    "codex",
+    "cursor",
+    "supply-chain",
+    "secrets",
+    "sarif"
+  ],
+  "type": "module",
+  "bin": {
+    "mcp-audit": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "mcpName": "io.github.asterionsec/mcp-audit",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test --test-timeout=30000 --test-force-exit test/rules.test.mjs test/formats.test.mjs test/runtime.test.mjs",
+    "verify": "node scripts/verify.mjs"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "@types/node": "22.20.7",
+    "typescript": "5.9.3"
+  }
+}
