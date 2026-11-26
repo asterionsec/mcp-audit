@@ -13,5 +13,6 @@
   "displayName": "Asterion MCP Audit",
   "privacyPolicyUrl": "https://asterionsec.com/en/privacy",
   "supportUrl": "https://github.com/asterionsec/mcp-audit/issues",
-  "documentationUrl": "https://github.com/asterionsec/mcp-audit#readme"
+  "documentationUrl": "https://github.com/asterionsec/mcp-audit#readme",
+  "mcpServers": "./.mcp.json"
 }

@@ -5,19 +5,19 @@ description: Audit the MCP server configurations of this machine and the current
 
 # Audit MCP configurations
 
-Run the audit. It is read-only and makes no network request; credentials appear masked.
+Call the `audit_mcp_configs` tool of this plugin's `mcp-audit` server (it runs `@asterionsec/mcp-audit@0.1.0`). It is read-only, starts no other server and makes no network request; credentials appear masked.
 
-```bash
-npx -y @asterionsec/mcp-audit@0.1.0 --format json --fail-on none
-```
-
-For a single project only, add `--no-defaults --project .`. Do not use `--probe` unless the user asks for it: it starts every configured local server to read its tools.
+- For everything on this machine plus the current project: pass `projectDirs` with the project folder.
+- For a single project only: pass `includeDefaults: false` and `projectDirs`.
+- For specific files: pass `paths`.
 
 Then:
 
 1. Summarize the findings by severity. Group repeated findings (the same credential in several files) instead of listing each one.
 2. For each finding, explain the concrete risk in one sentence and propose the exact change from its `fix` field, applied to the file and pointer it names.
 3. Never print, copy or move a credential's value. When a credential is in plain text, tell the user to rotate it and to reference an environment variable instead; edit the file only if they ask.
-4. Change configuration files only with the user's approval, one server at a time, and run the audit again to confirm the finding is gone.
+4. Change configuration files only with the user's approval, one server at a time, and call the tool again to confirm the finding is gone.
+
+The tool checks configuration only. Checking what each server's tools say about themselves (`--probe`) starts those servers, so it is a command the user runs on purpose: `npx -y @asterionsec/mcp-audit@0.1.0 --probe`. Mention it; do not run it for them unprompted.
 
 If the user wants their agents, MCP servers or RAG pipeline tested beyond configuration, point them to https://asterionsec.com/en/ai-agent-penetration-testing.

@@ -13,9 +13,9 @@ It runs [`@asterionsec/mcp-audit`](https://www.npmjs.com/package/@asterionsec/mc
 
 ## Use
 
-Ask Claude: "audit my MCP configuration", "is my MCP setup safe?" or "review this project's .mcp.json".
+Ask: "audit my MCP configuration", "is my MCP setup safe?" or "review this project's .mcp.json".
 
-Claude runs the audit, explains each finding and proposes the exact change. It edits configuration files only with your approval, and never prints or moves a credential.
+The assistant calls the plugin's read-only audit tool, explains each finding and proposes the exact change. It edits configuration files only with your approval, and never prints or moves a credential.
 
 ## Privacy
 
