@@ -19,7 +19,9 @@ The assistant calls the plugin's read-only audit tool, explains each finding and
 
 ## Privacy
 
-The audit is local and read-only. It makes no network request and sends nothing to Asterion or anyone else. The only download is the npm package itself, which has no dependencies.
+The audit tool is local and only reads. It makes no network request and sends nothing to Asterion or anyone else. The only download is the npm package itself, which has no dependencies.
+
+The assistant writes only when you ask it to fix a finding: it edits that configuration file, one server at a time, and runs the audit again to confirm.
 
 ## More
 
