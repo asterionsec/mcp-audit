@@ -1,6 +1,6 @@
 {
   "name": "@asterionsec/mcp-audit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Audit your MCP server configurations for supply-chain, secret, network, filesystem and auto-approval risks. Local, deterministic, zero runtime dependencies.",
   "license": "Apache-2.0",
   "author": "Asterion (https://asterionsec.com)",

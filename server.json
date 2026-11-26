@@ -3,14 +3,14 @@
   "name": "io.github.asterionsec/mcp-audit",
   "title": "MCP configuration audit",
   "description": "Audit local MCP server configurations: unpinned packages, plain-text credentials, risky permissions.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "websiteUrl": "https://asterionsec.com/en/tools/mcp-audit",
   "repository": { "url": "https://github.com/asterionsec/mcp-audit", "source": "github" },
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@asterionsec/mcp-audit",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "transport": { "type": "stdio" },
       "packageArguments": [{ "type": "positional", "value": "--mcp" }]
     }

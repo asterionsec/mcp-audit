@@ -35,6 +35,13 @@ export function defaultCandidates(projectDirs: string[], env: NodeJS.ProcessEnv 
       client: "cline",
     },
   ];
+  candidates.push(...projectCandidates(projectDirs));
+  return candidates;
+}
+
+/** The MCP files a project folder can carry, for every client that reads them from the project. */
+export function projectCandidates(projectDirs: string[]): Candidate[] {
+  const candidates: Candidate[] = [];
   for (const dir of projectDirs) {
     const root = resolve(dir);
     candidates.push(

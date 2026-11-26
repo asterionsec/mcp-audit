@@ -27,7 +27,7 @@ test("exit codes follow --fail-on, usage errors exit 2", () => {
   assert.equal(run([path, "--fail-on", "none"]).status, 0);
   assert.equal(run(["--bogus"]).status, 2);
   assert.equal(run(["--fail-on", "extreme"]).status, 2);
-  assert.equal(run(["--version"]).stdout.trim(), "0.1.0");
+  assert.equal(run(["--version"]).stdout.trim(), "0.1.1");
   const clean = writeFile(root, "clean/claude_desktop_config.json", { mcpServers: { ok: { command: "node", args: ["s.js"] } } });
   const result = run([clean, "--fail-on", "info"]);
   assert.equal(result.status, 0);
@@ -131,4 +131,15 @@ test("the official MCP SDK client can list and call the tool", async () => {
   assert.match(result.content[0].text, /MCP-NET-001/);
   assert.equal(result.structuredContent.findings[0].rule, "MCP-NET-001");
   await client.close();
+});
+
+test("--no-defaults --project audits exactly that project", () => {
+  const root = tempDir();
+  writeFile(root, ".mcp.json", { mcpServers: { r: { url: "http://mcp.example.com/mcp" } } });
+  writeFile(root, join(".cursor", "mcp.json"), { mcpServers: { p: { command: "npx", args: ["x"] } } });
+  const result = run(["--no-defaults", "--project", root, "--format", "json", "--fail-on", "none"]);
+  const report = JSON.parse(result.stdout);
+  assert.deepEqual(report.files.map((file) => file.client).sort(), ["claude-code", "cursor"]);
+  assert.deepEqual(report.findings.map((item) => item.rule).sort(), ["MCP-NET-001", "MCP-PIN-001"]);
+  assert.ok(report.files.every((file) => file.path.startsWith(root)), "nothing outside the project is read");
 });

@@ -1,6 +1,6 @@
 {
   "name": "asterion-mcp-audit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Audit the MCP servers configured on this machine and in this project for unpinned packages, plain-text credentials, unencrypted remote servers, broad filesystem access, privileged containers and auto-approved tools. Local and read-only.",
   "author": {
     "name": "Asterion",

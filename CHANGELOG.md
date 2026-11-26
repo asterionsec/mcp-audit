@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+- Fix: `--no-defaults --project <dir>` read no files; it now audits exactly that project, as documented for CI.
+- Fix: SARIF locations are relative URIs with forward slashes on Windows.
+- The Codex plugin runs the audit through its own declared MCP server; the Claude Code plugin is a skill that runs no program.
+
 ## 0.1.0
 
 First release.

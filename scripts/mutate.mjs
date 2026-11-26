@@ -40,6 +40,7 @@ export const MUTATIONS = [
   ["JSONC trailing commas before comments", "src/discover.ts", "const ahead = nextSignificant(text, index + 1);", "const ahead = index + 1;"],
   ["MCP tool is read-only", "src/mcp-server.ts", "readOnlyHint: true", "readOnlyHint: false"],
   ["unknown MCP method error", "src/mcp-server.ts", "if (isRequest) fail(message.id, -32601,", "if (false) fail(message.id, -32601,"],
+  ["project folders without defaults", "src/audit.ts", "projectCandidates(options.projectDirs)),", "[]),"],
   ["fail-on threshold", "src/cli.ts", "return findings.some((item) => severityRank(item.severity) <= threshold) ? 1 : 0;", "return 0;"],
 ];
 

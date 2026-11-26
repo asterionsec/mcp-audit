@@ -1,7 +1,7 @@
 // Runs the audit end to end: find the configuration files, read them, apply the rules and sort the
 // findings so the output is the same for the same input.
 
-import { candidateForPath, defaultCandidates, loadConfigs } from "./discover.js";
+import { candidateForPath, defaultCandidates, loadConfigs, projectCandidates } from "./discover.js";
 import { auditConfig } from "./rules.js";
 import type { ConfigFile, Finding } from "./types.js";
 import { severityRank } from "./types.js";
@@ -22,8 +22,10 @@ export interface AuditResult {
 }
 
 export function runAudit(options: AuditOptions): AuditResult {
+  // Project folders are read whether or not the user-level defaults are: --no-defaults --project .
+  // audits exactly one repository, which is what CI wants.
   const candidates = [
-    ...(options.includeDefaults ? defaultCandidates(options.projectDirs, options.env) : []),
+    ...(options.includeDefaults ? defaultCandidates(options.projectDirs, options.env) : projectCandidates(options.projectDirs)),
     ...options.paths.map(candidateForPath),
   ];
   const files = loadConfigs(candidates);

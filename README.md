@@ -7,11 +7,11 @@ Audit the MCP servers your AI tools are configured to run, before one of them ru
 It is local and deterministic. It makes no network request, sends nothing anywhere and has no runtime dependencies. Credentials are always shown masked.
 
 ```
-npx -y @asterionsec/mcp-audit@0.1.0
+npx -y @asterionsec/mcp-audit@0.1.1
 ```
 
 ```
-mcp-audit 0.1.0: 4 configuration files, 9 MCP servers
+mcp-audit 0.1.1: 4 configuration files, 9 MCP servers
   ~/.claude.json  [claude-code, 5 servers]
   ~/Library/Application Support/Claude/claude_desktop_config.json  [claude-desktop, 3 servers]
   ...
@@ -55,7 +55,7 @@ Exit codes: `0` nothing at or above `--fail-on`, `1` at least one finding at or 
 ### In CI
 
 ```yaml
-- run: npx -y @asterionsec/mcp-audit@0.1.0 --no-defaults --project . --sarif > mcp-audit.sarif
+- run: npx -y @asterionsec/mcp-audit@0.1.1 --no-defaults --project . --sarif > mcp-audit.sarif
 - uses: github/codeql-action/upload-sarif@v3
   with:
     sarif_file: mcp-audit.sarif
@@ -64,7 +64,7 @@ Exit codes: `0` nothing at or above `--fail-on`, `1` at least one finding at or 
 ### As an MCP server
 
 ```json
-{ "mcpServers": { "mcp-audit": { "command": "npx", "args": ["-y", "@asterionsec/mcp-audit@0.1.0", "--mcp"] } } }
+{ "mcpServers": { "mcp-audit": { "command": "npx", "args": ["-y", "@asterionsec/mcp-audit@0.1.1", "--mcp"] } } }
 ```
 
 It exposes one read-only tool, `audit_mcp_configs`. The MCP server never starts other servers: `--probe` is a command-line choice, so a prompt cannot make your agent execute every configured server.

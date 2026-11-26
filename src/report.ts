@@ -7,7 +7,7 @@ import type { ConfigFile, Finding, Severity } from "./types.js";
 import { SEVERITY_ORDER } from "./types.js";
 
 export const TOOL_NAME = "mcp-audit";
-export const TOOL_VERSION = "0.1.0";
+export const TOOL_VERSION = "0.1.1";
 export const TOOL_URL = "https://asterionsec.com/en/tools/mcp-audit";
 
 const LABEL: Record<Severity, string> = { critical: "CRITICAL", high: "HIGH", medium: "MEDIUM", low: "LOW", info: "INFO" };

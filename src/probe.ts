@@ -96,7 +96,7 @@ export function listTools(command: string, args: string[], env: Record<string, s
         }
       }
     });
-    send({ jsonrpc: "2.0", id: 1, method: "initialize", params: { protocolVersion: PROTOCOL_VERSION, capabilities: {}, clientInfo: { name: "mcp-audit", version: "0.1.0" } } });
+    send({ jsonrpc: "2.0", id: 1, method: "initialize", params: { protocolVersion: PROTOCOL_VERSION, capabilities: {}, clientInfo: { name: "mcp-audit", version: "0.1.1" } } });
   });
 }
 
