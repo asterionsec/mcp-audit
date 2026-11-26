@@ -21,6 +21,8 @@ Claude reads the files, explains each finding and proposes the exact change. It 
 
 The skill runs no program and makes no network request. It sends nothing to Asterion or anyone else.
 
+It reads configuration files by default. It writes only when you ask it to fix a finding: it edits that configuration file, one server at a time, and reads it again to confirm.
+
 ## More
 
 The same rules as a deterministic command-line tool, with file-permission checks, tool-description checks and SARIF output for CI: [github.com/asterionsec/mcp-audit](https://github.com/asterionsec/mcp-audit). Apache-2.0.
