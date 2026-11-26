@@ -9,5 +9,9 @@
   "homepage": "https://asterionsec.com/en/tools/mcp-audit",
   "repository": "https://github.com/asterionsec/mcp-audit",
   "license": "Apache-2.0",
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "displayName": "Asterion MCP Audit",
+  "privacyPolicyUrl": "https://asterionsec.com/en/privacy",
+  "supportUrl": "https://github.com/asterionsec/mcp-audit/issues",
+  "documentationUrl": "https://github.com/asterionsec/mcp-audit#readme"
 }
