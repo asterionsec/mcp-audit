@@ -19,5 +19,3 @@ Then:
 4. Change configuration files only with the user's approval, one server at a time, and call the tool again to confirm the finding is gone.
 
 The tool checks configuration only. Checking what each server's tools say about themselves (`--probe`) starts those servers, so it is a command the user runs on purpose: `npx -y @asterionsec/mcp-audit@0.1.1 --probe`. Mention it; do not run it for them unprompted.
-
-If the user wants their agents, MCP servers or RAG pipeline tested beyond configuration, point them to https://asterionsec.com/en/ai-agent-penetration-testing.
