@@ -9,7 +9,7 @@ Read the configuration files and apply the rules below. This skill runs no progr
 
 ## Handling credentials
 
-These files often hold API keys. Never print, copy, move or summarize a credential's value: refer to it by server and setting name only (for example, "the GITHUB_TOKEN of server github"). Do not paste file contents into the conversation.
+These files often hold API keys. Never print, copy, move or summarize a credential's value: refer to it by server and setting name only. Do not paste file contents into the conversation.
 
 ## Files to read
 
@@ -31,7 +31,7 @@ If the user asked about one project or one file, read only that.
 |---|---|---|
 | MCP-PIN-001 | medium | `npx`, `bunx`, `pnpm dlx`, `uvx`, `pipx run` or a container image runs without an exact version or digest (`pkg`, `pkg@latest`, `image:latest`) |
 | MCP-PIN-002 | high | Code comes from a git branch or a URL without a commit hash |
-| MCP-SEC-001 | high inside a git repository, medium elsewhere | A literal API key, token or password in `env`, headers, arguments or a URL. References such as `${VAR}` are fine |
+| MCP-SEC-001 | high inside a git repository, medium elsewhere | A literal API key, token or password in `env`, headers, arguments or a URL. A reference to an environment variable instead of a literal value is fine |
 | MCP-NET-001 | high | A remote server at `http://` or `ws://` that is not localhost |
 | MCP-FS-001 | high | A filesystem server is given `/`, `~`, the home folder or a drive root |
 | MCP-DOCKER-001 | high | A container gets `--privileged`, the Docker socket, the host root, host network or PID namespace |
