@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "mcp-audit": {
-      "command": "npx",
-      "args": ["-y", "@asterionsec/mcp-audit@0.1.0", "--mcp"]
-    }
-  }
-}
