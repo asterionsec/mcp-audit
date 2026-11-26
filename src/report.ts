@@ -1,6 +1,7 @@
 // Output formats: a readable report for a terminal, JSON for scripts and SARIF 2.1.0 for code
 // scanning (GitHub, GitLab, IDEs). All three carry the same findings, already masked.
 
+import { isAbsolute, relative as relativePath, sep } from "node:path";
 import { RULES } from "./rules.js";
 import type { ConfigFile, Finding, Severity } from "./types.js";
 import { SEVERITY_ORDER } from "./types.js";
@@ -60,7 +61,13 @@ const SARIF_LEVEL: Record<Severity, "error" | "warning" | "note"> = { critical: 
 const SECURITY_SEVERITY: Record<Severity, string> = { critical: "9.5", high: "8.0", medium: "5.5", low: "3.0", info: "1.0" };
 
 export function sarifReport(findings: Finding[], baseDir: string): string {
-  const relative = (path: string) => (path.startsWith(baseDir + "/") ? path.slice(baseDir.length + 1) : path);
+  // SARIF locations are URIs: relative to the base directory when the file is inside it, and always
+  // with forward slashes, also on Windows.
+  const relative = (path: string) => {
+    const inside = relativePath(baseDir, path);
+    const chosen = inside && !inside.startsWith("..") && !isAbsolute(inside) ? inside : path;
+    return chosen.split(sep).join("/");
+  };
   return (
     JSON.stringify(
       {
